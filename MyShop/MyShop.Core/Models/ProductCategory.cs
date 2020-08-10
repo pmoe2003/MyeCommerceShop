@@ -7,18 +7,20 @@ using System.Threading.Tasks;
 
 namespace MyShop.Core.Models
 {
-    public class ProductCategory
+    //Product is implemented by BaseEntity
+    public class ProductCategory : BaseEntity
     {
-
-        public string Id { get; set; }
+        //Got rid of this because Id is in the baseEntity
+        //public string Id { get; set; }
         public string Category { get; set; }
 
+        //Got rid of the constructor because this is now handled in the BaseEntity
         //create new id everytime a category model is built
-        public ProductCategory()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
-            
+        //public ProductCategory()
+        //{
+        //    this.Id = Guid.NewGuid().ToString();
+        //}
+
     }
 
 

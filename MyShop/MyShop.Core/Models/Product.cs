@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 
 namespace MyShop.Core.Models
 {
-    public class Product
+    //Product is implemented by BaseEntity
+    public class Product : BaseEntity
     {
-        public string Id { get; set; }
+
+        //Got rid of this because Id is in the baseEntity
+        //public string Id { get; set; }
         
         [StringLength(20)]
         [DisplayName("Product Name")]
@@ -21,9 +24,11 @@ namespace MyShop.Core.Models
         public string Category { get; set; }
         public string Image { get; set; }
 
-        public Product()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
+
+        //Got rid of the constructor because this is now handled in the BaseEntity
+        //public Product()
+        //{
+        //    this.Id = Guid.NewGuid().ToString();
+        //}
     }
 }
