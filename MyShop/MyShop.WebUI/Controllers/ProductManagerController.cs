@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -54,7 +55,8 @@ namespace MyShop.WebUI.Controllers
 
         //Details to be posted in
         [HttpPost]
-        public ActionResult Create(Product product)
+        //In UploadingImages Course Need to change the Create Method to recieve a HTTP Post file (image)
+        public ActionResult Create(Product product, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
@@ -62,6 +64,13 @@ namespace MyShop.WebUI.Controllers
             }
             else
             {
+
+                if (file != null)
+                {
+                    product.Image = product.Id + Path.GetExtension(file.FileName);
+                    //Function Server.MapPath allows to add an UNC path - and then saves to a physical location on the disk
+                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image) ;
+                }
                 //Insert to collection
                 context.Insert(product);
                 //save changes
@@ -91,7 +100,7 @@ namespace MyShop.WebUI.Controllers
 
         //Takes in the product that we are updated
         [HttpPost]
-        public ActionResult Edit(Product product, string Id)
+        public ActionResult Edit(Product product, string Id, HttpPostedFileBase file)
         {
             Product productToEdit = context.Find(Id);
            
@@ -105,10 +114,19 @@ namespace MyShop.WebUI.Controllers
                 {
                     return View(product);
                 }
+
+                if (file != null)
+                {
+                    productToEdit.Image = product.Id + Path.GetExtension(file.FileName);
+                    //Function Server.MapPath allows to add an UNC path - and then saves to a physical location on the disk
+                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + productToEdit.Image);
+                }
+
                 //if not valid - return after manually updating
                 productToEdit.Category = product.Category;
                 productToEdit.Description = product.Description;
-                productToEdit.Image = product.Image;
+                //Remove on addition for UploadingImages
+                //productToEdit.Image = product.Image;
                 productToEdit.Name = product.Name;
                 productToEdit.Price = product.Price;
 
