@@ -18,7 +18,7 @@
         @Html.HiddenFor(model => model.Product.Id)
 
         <div class="col-md-2"> @*2 columns wide*@
-            <img class="img-responsive" src="~/Conent/ProductImages/@Model.Product.Image"/>
+            <img class="img-responsive" src="~/Content/ProductImages/@Model.Product.Image"/>
         </div>
 
         <div class="col-md-10">
@@ -57,7 +57,7 @@
                 @Html.LabelFor(model => model.Product.Image, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @*@Html.EditorFor(model => model.Product.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Product.Image, "", new { @class = "text-danger" })*@
+                    @Html.ValidationMessageFor(model => model.Product.Image, "", new { @class = "text-danger" })*@
                     <input type="file" id="file" name="file" class="form-control" />
                 </div>
             </div>
