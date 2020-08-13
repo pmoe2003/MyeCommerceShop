@@ -21,5 +21,8 @@ namespace MyShop.DataAccess.SQL
         //Create constructor to identity what model will be stored in the database
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
+       //Update underlying storage
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; } 
     }
 }
