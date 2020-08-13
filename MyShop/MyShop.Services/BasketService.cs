@@ -118,14 +118,15 @@ namespace MyShop.Services
             if (basket != null)
             {
                 var results = (from b in basket.BasketItems
-                              join p in productContext.Collection() on b.ProductId equals p.Id
-                              select new BasketItemViewModel()
-                              {
-                              Id = b.Id,
-                              Quanity = b.Quanity,
-                              Image = p.Image,
-                              Price = p.Price
-                              }
+                               join p in productContext.Collection() on b.ProductId equals p.Id
+                               select new BasketItemViewModel()
+                               {
+                                   Id = b.Id,
+                                   Quanity = b.Quanity,
+                                   ProductName = p.Name,
+                                   Image = p.Image,
+                                   Price = p.Price
+                               }
                               ).ToList();
 
                 return results;
