@@ -3,7 +3,12 @@
 @{
     ViewBag.Title = "Basket";
 }
-
+    <style>
+        th {
+            color: DodgerBlue;
+            font-size: 15px;
+        }
+    </style>
 <h2>Basket</h2>
 
 @*<p>
@@ -54,10 +59,10 @@
     </td>*@
 </tr>
 }
-    <tr>
-        <td colspan="4" style="text-align : right"><strong>Basket Total</strong></td>
-        <td>@string.Format("{0:c}", (from p in Model select p.Price * p.Quanity).Sum())</td>
-        
-        <td><a href="@Url.Action("Checkout", "Basket")">Checkout</a></td>
-    </tr>
+<tr>
+    <td colspan="1" style="text-align : Left"><strong><a href="@Url.Action("Index", "Home")">Continue Shopping</strong></td>
+    <td colspan="3" style="text-align : right"><strong>Basket Total</strong></td>
+    <td>@string.Format("{0:c}", (from p in Model select p.Price * p.Quanity).Sum())</td>
+    <td><a href="@Url.Action("Checkout", "Basket")">Checkout</a></td>
+</tr>
 </table>

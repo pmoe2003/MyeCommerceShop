@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<MyShop.Core.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Product Management";
 }
 
-<h2>Index</h2>
+    <h2>Product Management</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
